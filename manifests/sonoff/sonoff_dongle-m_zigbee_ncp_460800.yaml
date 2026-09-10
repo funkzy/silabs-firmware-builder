@@ -11,6 +11,18 @@ gbl:
   baudrate: 460800
   fw_variant: no_flow
 
+configuration:
+  # A trust centre that keeps a unique link key per device (a network migrated from Z-Stack
+  # brings its own per-device keys; EmberZNet cannot re-derive them and can only hold them
+  # as key-table entries).  254 is the stack maximum since EmberZNet 8.1 (release notes
+  # 1342410/1342412; the token-factory-reset watchdog trip at >=120 entries, 1352533, is
+  # fixed in 8.1 rev 2 / 1402930).  Silicon Labs' large-network guidance (8.1 notes §7):
+  # key table = network size, NVM3 64K instead of the 32K sample default, a bigger NVM3
+  # cache.  NVM3 grows from 4 to 8 flash pages at the top of the 1536 KB part.
+  SL_ZIGBEE_KEY_TABLE_SIZE: 254
+  NVM3_DEFAULT_NVM_SIZE: 65536
+  NVM3_DEFAULT_CACHE_SIZE: 600
+
 c_defines:
   SL_IOSTREAM_EUSART_VCOM_BAUDRATE: 460800
   SL_IOSTREAM_EUSART_VCOM_FLOW_CONTROL_TYPE: SL_IOSTREAM_EUSART_UART_FLOW_CTRL_NONE
