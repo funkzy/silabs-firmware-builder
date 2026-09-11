@@ -43,19 +43,33 @@ define:
   #   value: 15
   - name: SL_ZIGBEE_MULTICAST_TABLE_SIZE
     value: 26
+    condition: ["device_generic_family_efr32xg21"]
+  - name: SL_ZIGBEE_MULTICAST_TABLE_SIZE
+    value: 64
+    condition: ["device_generic_family_efr32xg24"]
+  - name: SL_ZIGBEE_MULTICAST_TABLE_SIZE
+    value: 64
+    condition: ["device_generic_family_efr32xg26"]
   - name: SL_ZIGBEE_ROUTE_TABLE_SIZE
     value: 16
+    condition: ["device_generic_family_efr32xg21"]
+  - name: SL_ZIGBEE_ROUTE_TABLE_SIZE
+    value: 254
+    condition: ["device_generic_family_efr32xg24"]
+  - name: SL_ZIGBEE_ROUTE_TABLE_SIZE
+    value: 254
+    condition: ["device_generic_family_efr32xg26"]
   ## xg21
   - name: SL_ZIGBEE_DISCOVERY_TABLE_SIZE
     value: 8
     condition: ["device_generic_family_efr32xg21"]
   ## xg24
   - name: SL_ZIGBEE_DISCOVERY_TABLE_SIZE
-    value: 16
+    value: 64
     condition: ["device_generic_family_efr32xg24"]
   ## xg26
   - name: SL_ZIGBEE_DISCOVERY_TABLE_SIZE
-    value: 16
+    value: 64
     condition: ["device_generic_family_efr32xg26"]
 
 configuration:
@@ -114,7 +128,7 @@ configuration:
     condition:
       - iostream_eusart
   - name: SL_ZIGBEE_BROADCAST_TABLE_SIZE
-    value: 30
+    value: 64
   - name: SL_ZIGBEE_NEIGHBOR_TABLE_SIZE
     value: 26
   - name: SL_ZIGBEE_BINDING_TABLE_SIZE
@@ -139,32 +153,38 @@ configuration:
     value: 254
     condition: ["device_generic_family_efr32xg24"]
   - name: SL_ZIGBEE_ADDRESS_TABLE_SIZE
-    value: 64
+    value: 254
     condition: ["device_generic_family_efr32xg24"]
   - name: SL_ZIGBEE_APS_UNICAST_MESSAGE_COUNT
-    value: 128
+    value: 254
     condition: ["device_generic_family_efr32xg24"]
   - name: SL_ZIGBEE_MAX_END_DEVICE_CHILDREN
     value: 64
     condition: ["device_generic_family_efr32xg24"]
   - name: SL_ZIGBEE_APS_DUPLICATE_REJECTION_MAX_ENTRIES
-    value: 64
+    value: 128
+    condition: ["device_generic_family_efr32xg24"]
+  - name: SL_ZIGBEE_PACKET_BUFFER_HEAP_SIZE
+    value: SL_ZIGBEE_HUGE_PACKET_BUFFER_HEAP
     condition: ["device_generic_family_efr32xg24"]
   ## xg26
   - name: SL_ZIGBEE_SOURCE_ROUTE_TABLE_SIZE
     value: 254
     condition: ["device_generic_family_efr32xg26"]
   - name: SL_ZIGBEE_ADDRESS_TABLE_SIZE
-    value: 64
+    value: 254
     condition: ["device_generic_family_efr32xg26"]
   - name: SL_ZIGBEE_APS_UNICAST_MESSAGE_COUNT
-    value: 128
+    value: 254
     condition: ["device_generic_family_efr32xg26"]
   - name: SL_ZIGBEE_MAX_END_DEVICE_CHILDREN
     value: 64
     condition: ["device_generic_family_efr32xg26"]
   - name: SL_ZIGBEE_APS_DUPLICATE_REJECTION_MAX_ENTRIES
-    value: 64
+    value: 128
+    condition: ["device_generic_family_efr32xg26"]
+  - name: SL_ZIGBEE_PACKET_BUFFER_HEAP_SIZE
+    value: SL_ZIGBEE_HUGE_PACKET_BUFFER_HEAP
     condition: ["device_generic_family_efr32xg26"]
 
 source:
